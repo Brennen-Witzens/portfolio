@@ -13,7 +13,7 @@ pub struct Props {
 #[function_component(ExperienceBlock)]
 pub fn experience_block(props: &Props) -> Html {
     html! {
-        <div class="py-4">
+        <div class="py-2">
         // TODO: Figure out color scheme to use
         <div class="bg-blue-400 border border-gray-200 flex p-4 rounded-lg dark:bg-slate-800 dark:border-slate-700">
             <div class="flex flex-col flex-grow">

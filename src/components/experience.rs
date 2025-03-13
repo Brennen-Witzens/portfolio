@@ -18,12 +18,43 @@ pub fn experience() -> Html {
     }
 
     html! {
-        // Most recent down
+    <>
+        //TODO: work on getting experience block components setup for each of the jobs
     <ExperienceBlock
         company_name="KidStrong"
         date="Mar 2022 - Feb 2025"
         job_title="Software Engineer"
         description={handle_description()}
     />
+        //TODO: Clean this up
+    <ExperienceBlock
+        company_name="Competition Interactive-Virtual Sports"
+        date="Nov 2020 - Mar 2022"
+        job_title="Unity Developer"
+        description= {
+                html!{
+                    <>
+                    <ul class="list-inside list-disc container">
+                    <li> {"Wrote performant code and updated existing projects either alongside other developers or independently" } </li>
+                    <li> {"Worked with Git repositories for multiple projects"} </li>
+                    <li> {"Worked in Unity to develop iOS, Android, WebGL based applications"} </li>
+                    </ul>
+                    </>
+                }
+        }
+    />
+    <ExperienceBlock
+        company_name="GameDevHQ"
+        date="Jun 2020 - Aug 2020"
+        job_title="Independant Developer BootCamp Participant"
+        description="A fast paced bootcamp focused on Unity"
+    />
+    <ExperienceBlock
+        company_name="Outback Steakhouse"
+        date="Apr 2014 - Oct 2020"
+        job_title="Host/Dishwasher/Line cook"
+        description="Utilized time-management skills and attention to detail to provide a positive customer experience while maintaining a positive attitude in a fast-paced environment"
+    />
+    </>
     }
 }
