@@ -5,10 +5,11 @@ pub fn aboutme() -> Html {
     html! {
         <>
         <p>{ "Hey. I'm Brennen Witzens." } </p>
-        <p>{ "I'm a " } <strong> { "software engineer " } </strong> { "from Arizona. Focusing on backend and tool development" } </p>
-        <p>{ "I've also used Unity before for both applications and games" } </p>
+        <p>{ "I'm a " } <strong> { "software engineer " } </strong> { "from Arizona, focusing on backend and tool development." } </p>
+        <p>{ "I've also been a Unity developer, using it for both games and applications." } </p>
         // link here for yew
-        <p> { "I enjoy understanding the 'behind the scenes' of programming, so always excited to learn new things. Such as I built this website using Yew!" } </p>
+        <p> { "I really enjoy learning new things, trying to understand the 'behind the scenes' of programming. Such as this website was built using " } <a href="https://www.yew.rs" class="underline text-blue-300">
+        {"Yew"}</a> {" and Tailwind CSS" } </p>
         </>
     }
 }

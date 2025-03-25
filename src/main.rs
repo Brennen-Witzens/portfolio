@@ -12,7 +12,7 @@ use components::{aboutme::AboutMe, experience::Experience, footer::Footer};
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <div class="w-full h-full bg-slate-700 text-white">
+        <div class="w-full h-screen bg-slate-700 text-white">
         // TODO: Figure out good "width" to have set here for overall placement of things
         <div class="max-w[1200px] m-auto p-4">
         <AboutMe />
