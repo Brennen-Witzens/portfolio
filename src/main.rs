@@ -1,25 +1,29 @@
 use yew::prelude::*;
 
 mod components;
+use components::{aboutme::AboutMe, experience::Experience, footer::Footer, ui::menu::Menu};
 
-use components::{aboutme::AboutMe, experience::Experience, footer::Footer};
-
-// Struct for job text and blocks
-// Struct for "About me"
-// Struct for Experience/Projects
-// Struct for Link blocks/images
+// TODO:
+// - Different "welcome" page
+// - Have the "welcome" blocks change as the projects and other items are clicked
+// - Better introduction
+// 1. First on the list, get different colors setup. Get a proper "theming" going
+// 2. Welcome block and layout change
+//      2a. Layout change -> "Welcome" text under, and then buttons or links to projects, skills,
+//      etc.
 
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <div class="w-full h-screen bg-slate-700 text-white">
-        // TODO: Figure out good "width" to have set here for overall placement of things
-        <div class="max-w[1200px] m-auto p-4">
-        <AboutMe />
-        <Experience />
-        <Footer />
-        </div>
-        </div>
+    <body class="bg-slate-700 flex flex-col h-screen text-white">
+    <div class="flex justify-center items-center flex-grow">
+    <AboutMe/>
+    <Menu />
+    </div>
+    <div>
+    <Footer />
+    </div>
+    </body>
     }
 }
 
