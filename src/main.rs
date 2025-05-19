@@ -1,6 +1,8 @@
+use utils::{MenuState, use_menu_context};
 use yew::prelude::*;
 
 mod components;
+mod utils;
 use components::{aboutme::AboutMe, experience::Experience, footer::Footer, ui::menu::Menu};
 
 // TODO:
@@ -12,9 +14,20 @@ use components::{aboutme::AboutMe, experience::Experience, footer::Footer, ui::m
 //      2a. Layout change -> "Welcome" text under, and then buttons or links to projects, skills,
 //      etc.
 
+#[derive(Clone, Debug, PartialEq)]
+pub struct AppContext {
+    pub menu_state: UseReducerHandle<MenuState>,
+}
+
 #[function_component(App)]
 fn app() -> Html {
+    let menu_state: UseReducerHandle<MenuState> = use_menu_context();
     html! {
+    // TODO: Change/Make the default About me... programatically
+    <ContextProvider<AppContext> context={AppContext {
+    menu_state
+    }}>
+
     <body class="bg-slate-700 flex flex-col h-screen text-white">
     <div class="flex justify-center items-center flex-grow">
     <AboutMe/>
@@ -24,6 +37,7 @@ fn app() -> Html {
     <Footer />
     </div>
     </body>
+    </ContextProvider<AppContext>>
     }
 }
 
