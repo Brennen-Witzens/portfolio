@@ -2,6 +2,8 @@ use yew::{Hook, Reducible, UseReducerHandle, use_reducer};
 
 #[derive(Debug, PartialEq)]
 pub struct MenuState {
+    // TODO:
+    // - This should just be the enum. no need for string?
     pub current_state: String,
 }
 

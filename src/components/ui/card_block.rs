@@ -11,7 +11,7 @@ pub fn card(props: &CardProps) -> Html {
     html! {
         <>
         <div>
-        <div class="bg-blue-500 border border-gray-200">
+        <div class="bg-slate-400">
         {props.title.clone()}
         {props.description.clone()}
         </div>

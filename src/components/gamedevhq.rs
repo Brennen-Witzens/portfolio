@@ -9,6 +9,7 @@ pub fn gamedevhq() -> Html {
             <>
             <ul class="list-inside list-disc container">
                 <li> {"A fast paced bootcamp that focused on Unity"}</li>
+                <li> {"Designed and implemented custom editor tools, blended animations, and developed shaders."}</li>
             </ul>
             </>
         }

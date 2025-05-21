@@ -3,7 +3,10 @@ use yew::prelude::*;
 
 mod components;
 mod utils;
-use components::{aboutme::AboutMe, footer::Footer, ui::menu::Menu};
+use components::{
+    aboutme::AboutMe, civs::CIVS, color_theme::ColorTheme, discord_bot::DiscordBot, footer::Footer,
+    gamedevhq::GamedevHQ, kidstrong::KidStrong, ui::menu::Menu,
+};
 
 // TODO:
 // - Different "welcome" page
@@ -17,24 +20,27 @@ use components::{aboutme::AboutMe, footer::Footer, ui::menu::Menu};
 #[derive(Clone, Debug, PartialEq)]
 pub struct AppContext {
     pub menu_state: UseReducerHandle<MenuState>,
-    // ExperienceBlocks - Vec<Html>
-    // ProjectBlocks - Vec<Html>
-    // idx counter? or ProjectBlockState and ExperienceBlockState?
+    pub experience_blocks: Vec<Html>,
+    pub project_blocks: Vec<Html>,
     pub counter: UseStateHandle<i32>,
 }
 
 #[function_component(App)]
 fn app() -> Html {
     let menu_state: UseReducerHandle<MenuState> = use_menu_context();
+    let experience_blocks = vec![html!(<KidStrong/>), html!(<CIVS/>), html!(<GamedevHQ/>)];
+    let project_blocks = vec![html!(<ColorTheme/>), html!(<DiscordBot/>)];
     let counter = use_state(|| 0);
     html! {
     // TODO: Change/Make the default About me... programatically
     <ContextProvider<AppContext> context={AppContext {
         menu_state,
+        experience_blocks,
+        project_blocks,
         counter
         }}>
 
-    <body class="bg-slate-700 flex flex-col h-screen text-white">
+    <body class="bg-gray-700 flex flex-col h-screen text-black">
     <div class="flex justify-center items-center flex-grow">
     <AboutMe/>
     <Menu />
