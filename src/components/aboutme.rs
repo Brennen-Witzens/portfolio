@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 use crate::{
     AppContext,
-    components::{experience::Experience, ui::card_block::Card},
+    components::{civs::CIVS, gamedevhq::GamedevHQ, kidstrong::KidStrong, ui::card_block::Card},
 };
 
 // TODO:
@@ -13,8 +13,8 @@ fn handle_card_description(app_context: &AppContext) -> Html {
             html! {
             <>
             <div class="flex flex-col flex-shrink justify-start border p-2 max-w-[1350px]">
-                <h1 class="text-3xl"> <strong> { "Welcome!" } </strong> </h1>
-                <br/>
+                //<h1 class="text-3xl"> <strong> { "Welcome!" } </strong> </h1>
+                //<br/>
                 <p>{ "Hello. I'm Brennen Witzens, a software engineer from Arizona." } </p>
                 <p>{ "I'm a " } <strong> { "Full Stack-Engineer" } </strong> { ", always looking to improve my skills and learn new things." } </p>
                 <p>{ "I'm mostly focused on backend development, as I've recently learned that I enjoy it more than designing UI." }</p>
@@ -36,13 +36,32 @@ fn handle_card_description(app_context: &AppContext) -> Html {
             html! {}
         }
         "Experience" => {
-            // TODO:
-            // - Make this centered
-            // - Should I make this a carousel?
-            // - I think the overall block is "fine" for now though
-            // - Maybe a vector to cycle them?
+            let experience_block = vec![html!(<KidStrong/>), html!(<CIVS/>), html!(<GamedevHQ/>)];
+            // TODO: move this into it's own function block
+            let onclick = {
+                let counter = app_context.counter.clone();
+                if (*counter as usize) < experience_block.len() - 1 {
+                    Callback::from(move |_: MouseEvent| counter.set(*counter + 1))
+                } else {
+                    Callback::from(move |_: MouseEvent| counter.set(0))
+                }
+            };
+
             html! {
-                <Experience />
+                <>
+                <div class="flex flex-shrink justify-start border p-2 max-w-[1350px]">
+                <div class="flex flex-shrink justify-center min-w-[75px]">
+                <button onclick={&onclick}> { "Previous" } </button>
+                </div>
+                    {experience_block[*app_context.counter as usize].clone()}
+                <div class="flex flex-shrink justify-center min-w-[75px]">
+                <button onclick={&onclick}> { "Next" } </button>
+                </div>
+                </div>
+                // TODO:
+                // - At some point try to add indicators
+                // Indicators go here
+                </>
             }
         }
         _ => todo!(),
@@ -50,14 +69,14 @@ fn handle_card_description(app_context: &AppContext) -> Html {
 
     html_block
 }
-
 #[function_component(AboutMe)]
 pub fn aboutme() -> Html {
     let context: AppContext = use_context::<AppContext>().expect("Failed to get app context");
+
     html! {
         <>
         <Card
-            title=""
+            title={html!{<><h1 class="text-3xl"> <strong> { "Welcome!" } </strong> </h1></>}}
             description={handle_card_description(&context)}
         />
         </>
